@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALEX | Portfolio</title>
+    <title>ALEX | Python Developer Portfolio</title>
     <style>
-        /* Base Reset & Styling */
+        /* Base Reset & Developer Styling */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Courier New', Courier, monospace, 'Segoe UI';
         }
 
         body {
             background-color: #0b0c10;
             color: #ffffff;
             overflow-x: hidden;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.85)), 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)), 
                               url('https://unsplash.com');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
-        /* Neon Blinking Animations */
+        /* Neon Blinking Keyframes */
         @keyframes blink-cyan {
             0%, 18%, 22%, 25%, 53%, 57%, 100% {
                 text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #00f3ff, 0 0 40px #00f3ff, 0 0 80px #00f3ff;
@@ -36,18 +36,18 @@
 
         @keyframes blink-magenta {
             0%, 18%, 22%, 25%, 53%, 57%, 100% {
-                text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #ff007f, 0 0 40px #ff007f, 0 0 80px #ff007f;
+                text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #ff007f, 0 0 40px #ff007f;
                 border-color: #ff007f;
-                box-shadow: 0 0 10px #ff007f;
+                box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
             }
             20%, 24%, 55% {        
                 text-shadow: none;
-                border-color: #55002a;
+                border-color: #440022;
                 box-shadow: none;
             }
         }
 
-        /* Header Navigation */
+        /* Layout Headers */
         header {
             display: flex;
             justify-content: space-between;
@@ -59,10 +59,6 @@
             display: flex;
             gap: 15px;
             font-size: 20px;
-        }
-
-        .controls span {
-            cursor: pointer;
             color: #00f3ff;
             text-shadow: 0 0 10px #00f3ff;
         }
@@ -78,15 +74,14 @@
             font-weight: bold;
             font-size: 16px;
             letter-spacing: 2px;
-            transition: 0.3s;
         }
 
         .nav-home { color: #00f3ff; text-shadow: 0 0 8px #00f3ff; }
         .nav-projects { color: #ff007f; text-shadow: 0 0 8px #ff007f; }
-        .nav-about { color: #ffaa00; text-shadow: 0 0 8px #ffaa00; }
+        .nav-stack { color: #ffaa00; text-shadow: 0 0 8px #ffaa00; }
         .nav-contact { color: #00ff66; text-shadow: 0 0 8px #00ff66; }
 
-        /* Hero Section */
+        /* Main Identity Container */
         .hero {
             text-align: center;
             margin: 40px 0 80px 0;
@@ -95,14 +90,220 @@
         .hero h1 {
             font-size: 110px;
             letter-spacing: 15px;
-            color: #fff;
             animation: blink-cyan 4s infinite alternate;
         }
 
         .hero p {
             font-size: 18px;
             letter-spacing: 4px;
-            font-weight: 500;
+            margin-top: 15px;
+        }
+
+        .hero p span.cyan { color: #00f3ff; }
+        .hero p span.magenta { color: #ff007f; }
+
+        /* Grid Configuration */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Code Architecture Blocks */
+        .card {
+            background: rgba(11, 12, 16, 0.9);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .code-preview {
+            width: 100%;
+            height: 140px;
+            background: #050508;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            padding: 15px;
+            font-size: 12px;
+            color: #39ff14;
+            border: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+            text-shadow: 0 0 2px #39ff14;
+        }
+
+        .card p {
+            color: #a5b4fc;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .card-btn {
+            background: none;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Color Frameworks */
+        .cyan-card { border: 2px solid #00f3ff; box-shadow: 0 0 15px rgba(0,243,255,0.15); }
+        .cyan-card h2, .cyan-card .card-btn { color: #00f3ff; }
+
+        .orange-card { border: 2px solid #ffaa00; box-shadow: 0 0 15px rgba(255,170,0,0.15); }
+        .orange-card h2, .orange-card .card-btn { color: #ffaa00; }
+
+        .magenta-card { border: 2px solid #ff007f; animation: blink-magenta 5s infinite; }
+        .magenta-card h2, .magenta-card .card-btn { color: #ff007f; }
+
+        .green-card { border: 2px solid #00ff66; box-shadow: 0 0 15px rgba(0,255,102,0.15); }
+        .green-card h2, .green-card .card-btn { color: #00ff66; }
+
+        /* Lower Social Wrapper */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+        }
+
+        .socials { display: flex; gap: 25px; }
+        .socials a { text-decoration: none; font-weight: bold; }
+        .soc-main { color: #ffffff; }
+        .soc-insta { color: #ff007f; }
+        .soc-beh { color: #00f3ff; }
+        .soc-git { color: #00ff66; }
+        .copyright { color: #555; }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Interface -->
+    <header>
+        <div class="controls">
+            <span>&lt;/&gt;</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-home">HOME</a></li>
+                <li><a href="#" class="nav-projects">REPOS</a></li>
+                <li><a href="#" class="nav-stack">TECH_STACK</a></li>
+                <li><a href="#" class="nav-contact">CONNECT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <section class="hero">
+        <h1>ALEX</h1>
+        <p>
+            <span class="cyan">PYTHON PROGRAMMER</span> | 
+            <span class="magenta">WEB DEVELOPER</span>
+        </p>
+    </section>
+
+    <!-- Project Matrix Module -->
+    <main class="project-grid">
+        
+        <!-- Project 1: Backend API -->
+        <div class="card cyan-card">
+            <div>
+                <h2>FASTAPI BACKEND</h2>
+                <div class="code-preview">
+                    import fastapi<br>
+                    app = fastapi.FastAPI()<br>
+                    @app.get("/")<br>
+                    def root(): return {"status": "online"}
+                </div>
+                <p>Asynchronous REST API framework built using FastAPI, featuring JWT security validations and PostgreSQL engines.</p>
+            </div>
+            <button class="card-btn">VIEW REPOSITORY &rarr;</button>
+        </div>
+
+        <!-- Project 2: Web Scraping -->
+        <div class="card orange-card">
+            <div>
+                <h2>DATA SCRAPER</h2>
+                <div class="code-preview">
+                    import scrapy<br>
+                    class Spider(scrapy.Spider):<br>
+                    &nbsp;&nbsp;name = "data_miner"<br>
+                    &nbsp;&nbsp;# Parsing engine pipelines...
+                </div>
+                <p>Advanced data parsing application engineered with Scrapy and BeautifulSoup to monitor changing asset price listings.</p>
+            </div>
+            <button class="card-btn">VIEW REPOSITORY &rarr;</button>
+        </div>
+
+        <!-- Project 3: Full Stack Application (Blinking Component) -->
+        <div class="card magenta-card">
+            <div>
+                <h2>DJANGO WEB APP</h2>
+                <div class="code-preview">
+                    from django.db import models<br>
+                    class Profile(models.Model):<br>
+                    &nbsp;&nbsp;user = models.OneToOneField()<br>
+                    &nbsp;&nbsp;is_active = True
+                </div>
+                <p>Dynamic full-stack dashboard platform featuring asynchronous task execution managers managed entirely via Celery & Redis.</p>
+            </div>
+            <button class="card-btn">VIEW REPOSITORY &rarr;</button>
+        </div>
+
+        <!-- Project 4: Interactive Frontend -->
+        <div class="card green-card">
+            <div>
+                <h2>ASYNC DASHBOARD</h2>
+                <div class="code-preview">
+                    const fetchMetrics = async () => {<br>
+                    &nbsp;&nbsp;const res = await fetch('/api');<br>
+                    &nbsp;&nbsp;const data = await res.json();<br>
+                    }
+                </div>
+                <p>Event-driven analytics dashboard user interface utilizing reactive state updates and rendering real-time metrics data graphs.</p>
+            </div>
+            <button class="card-btn">VIEW REPOSITORY &rarr;</button>
+        </div>
+
+    </main>
+
+    <!-- Terminal Footer -->
+    <footer>
+        <div class="socials">
+            <a href="#" class="soc-main">TERMINAL</a>
+            <a href="#" class="soc-insta">LINKEDIN</a>
+            <a href="#" class="soc-beh">STACKOVERFLOW</a>
+            <a href="#" class="soc-git">GITHUB</a>
+        </div>
+        <div class="copyright">
+            &copy; 2026 ALEX. ALL SYSTEMS OPERATIONAL
+        </div>
+    </footer>
+
+</body>
+</html>
             margin-top: 10px;
         }
 
